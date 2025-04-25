@@ -1,0 +1,15 @@
+cd .. && checkpatch.pl -f src/*.c
+/bin/sh: checkpatch.pl: command not found
+make: [lint] Error 127 (ignored)
+cd .. && cpplint --recursive src/
+/bin/sh: cpplint: command not found
+make: [lint] Error 127 (ignored)
+cd .. && shellcheck checker/*.sh
+/bin/sh: shellcheck: command not found
+make: [lint] Error 127 (ignored)
+cd .. && shellcheck tests/*.sh
+/bin/sh: shellcheck: command not found
+make: [lint] Error 127 (ignored)
+cd .. && shellcheck tests/_test/*.sh
+/bin/sh: shellcheck: command not found
+make: [lint] Error 127 (ignored)

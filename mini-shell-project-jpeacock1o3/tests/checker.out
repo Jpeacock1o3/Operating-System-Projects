@@ -1,0 +1,116 @@
+make -C ../src UTIL_PATH=/Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../util clean
+rm -f ../src.zip
+rm -rf main.o cmd.o utils.o /Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../util/parser/parser.tab.o /Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../util/parser/parser.yy.o mini-shell *~
+make clean
+rm -f *~
+make -i SRC_PATH=../src
+make -C ../src UTIL_PATH=/Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../util CPPFLAGS=-I/Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../src
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C /Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../util/parser/
+gcc  -c parser.tab.c
+gcc  -c parser.yy.c
+g++  -o UseParser UseParser.o parser.tab.o parser.yy.o
+g++  -o DisplayStructure DisplayStructure.o parser.tab.o parser.yy.o
+g++  -o CUseParser CUseParser.o parser.tab.o parser.yy.o
+gcc -g -Wall -I/Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../src  -c -o main.o main.c
+gcc -g -Wall -I/Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../src  -c -o cmd.o cmd.c
+cmd.c:192:9: warning: initializing 'char *' with an expression of type 'const char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  192 |                 char *var_name = s->verb->string; // Variable name is the first part
+      |                       ^          ~~~~~~~~~~~~~~~
+1 warning generated.
+gcc -g -Wall -I/Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../src  -c -o utils.o utils.c
+gcc -g -Wall main.o cmd.o utils.o /Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../util/parser/parser.tab.o /Users/jadenpeacock/Downloads/ProgrammingAssign/cmpsc473/mini-shell-project-jpeacock1o3/tests/../util/parser/parser.yy.o -o mini-shell
+SRC_PATH=../src ./run_all.sh
+
+                         = Testing - mini-shell =
+
+valgrind is not installed.
+./_test/run_test.sh: line 68: "0" + 1: syntax error: operand expected (error token is ""0" + 1")
+sed: .in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "0"+1: syntax error: operand expected (error token is ""0"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "1" + 1: syntax error: operand expected (error token is ""1" + 1")
+sed: .in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "1"+1: syntax error: operand expected (error token is ""1"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "2" + 1: syntax error: operand expected (error token is ""2" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "2"+1: syntax error: operand expected (error token is ""2"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "3" + 1: syntax error: operand expected (error token is ""3" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "3"+1: syntax error: operand expected (error token is ""3"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "4" + 1: syntax error: operand expected (error token is ""4" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "4"+1: syntax error: operand expected (error token is ""4"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "5" + 1: syntax error: operand expected (error token is ""5" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "5"+1: syntax error: operand expected (error token is ""5"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "6" + 1: syntax error: operand expected (error token is ""6" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "6"+1: syntax error: operand expected (error token is ""6"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "7" + 1: syntax error: operand expected (error token is ""7" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "7"+1: syntax error: operand expected (error token is ""7"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "8" + 1: syntax error: operand expected (error token is ""8" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "8"+1: syntax error: operand expected (error token is ""8"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "9" + 1: syntax error: operand expected (error token is ""9" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "9"+1: syntax error: operand expected (error token is ""9"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "10" + 1: syntax error: operand expected (error token is ""10" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "10"+1: syntax error: operand expected (error token is ""10"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "11" + 1: syntax error: operand expected (error token is ""11" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "11"+1: syntax error: operand expected (error token is ""11"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "12" + 1: syntax error: operand expected (error token is ""12" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "12"+1: syntax error: operand expected (error token is ""12"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "13" + 1: syntax error: operand expected (error token is ""13" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "13"+1: syntax error: operand expected (error token is ""13"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "14" + 1: syntax error: operand expected (error token is ""14" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "14"+1: syntax error: operand expected (error token is ""14"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "15" + 1: syntax error: operand expected (error token is ""15" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "15"+1: syntax error: operand expected (error token is ""15"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "16" + 1: syntax error: operand expected (error token is ""16" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "16"+1: syntax error: operand expected (error token is ""16"+1")
+valgrind is not installed.
+./_test/run_test.sh: line 68: "17" + 1: syntax error: operand expected (error token is ""17" + 1")
+./_test/run_test.sh: line 131: ../.in: No such file or directory
+_test/test_lib.sh: line 66: "17"+1: syntax error: operand expected (error token is ""17"+1")
+
+Checker:   0/100
