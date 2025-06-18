@@ -2,6 +2,19 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+/* Support routines */
+
+void *mm_sbrk(intptr_t incr);
+void *mm_heap_lo(void);
+void *mm_heap_hi(void);
+size_t mm_heapsize(void);
+size_t mm_pagesize(void);
+void *mm_memcpy(void *dst, const void *src, size_t n);
+void *mm_memset(void *dst, int c, size_t n);
+
+/* Functions used for memory emulation */
+/* You should not be calling these functions */
+
 void mem_init();               
 void mem_deinit(void);
 void *mem_sbrk(intptr_t incr);
@@ -10,8 +23,6 @@ void *mem_heap_lo(void);
 void *mem_heap_hi(void);
 size_t mem_heapsize(void);
 size_t mem_pagesize(void);
-
-/* Functions used for memory emulation */
 
 /* Read len bytes and return value zero-extended to 64 bits */
 /* Require 0 <= len <= 8 */

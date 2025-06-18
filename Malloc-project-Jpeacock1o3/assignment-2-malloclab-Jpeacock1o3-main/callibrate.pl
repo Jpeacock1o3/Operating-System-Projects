@@ -105,6 +105,9 @@ if ((-e $save_file) && $lookup_ok == 1) {
 }
 
 # Run measurements
+print "Running callibration for CPU performance (please be patient, this may take a few minutes)\n";
+print "IMPORTANT: Your computer must be plugged in and under high performance settings for an accurate calibration\n";
+print "If this is not the case, then remove the throughputs.txt file and restart the testing once you're plugged in and disabled power saving features\n";
 @values = ();
 
 for ($i = 0; $i < $N; $i += 1) {

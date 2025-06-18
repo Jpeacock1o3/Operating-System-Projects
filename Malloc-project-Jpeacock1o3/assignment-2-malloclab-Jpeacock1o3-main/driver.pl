@@ -24,7 +24,7 @@ $| = 1;      # Autoflush output on every print statement
 
 # Settings
 # Driver timeout
-$timeout = 180;
+$timeout = 1800;
 
 getopts('hs:');
 
@@ -48,6 +48,26 @@ if (!-e $callibration_prog) {
 
 system("$callibration_prog $callibration_flags");
 
+# Run macro checker
+$macro_check = `./macro-check.pl -f mm.c`;
+
+if ($macro_check ne "") {
+    print $macro_check;
+    print "FAILED macro check: You are not allowed to use macros for this assignment. Use static functions instead.\n";
+    print "Score: Checkpoint 1: 0 / 100, Checkpoint 2: 0 / 100, Final: 0 / 100\n";
+    exit;
+}
+
+# Run global checker
+$global_check = `./global_check.sh`;
+
+if ($global_check ne "") {
+    print $global_check;
+    print "FAILED global check: You are not allowed to use more than 128 bytes of global memory for this assignment.\n";
+    print "Score: Checkpoint 1: 0 / 100, Checkpoint 2: 0 / 100, Final: 0 / 100\n";
+    exit;
+}
+
 $driver_prog = "./mdriver";
 
 if (!-e $driver_prog) {
@@ -56,37 +76,18 @@ if (!-e $driver_prog) {
 
 print "Running $driver_prog -s $timeout $driver_flags\n";
 
-$dstring = `$driver_prog -A -s $timeout $driver_flags 2>&1` ||
-    die "Couldn't run driver $driver_prog\n";
-
-$found_autograde = 0;
-$prefix = "";
-$score = 0;
-$mid = "";
-@fields = ();
-$suffix = "";
-
-# Extract the autograde JSON from the driver output
-for $line (split "\n", $dstring) {
-    if ($line =~ /Autograded Score/) {
-        $found_autograde = 1;
-        $line =~ /^([^0-9]*)([0-9\.]+)([^0-9]*)\[(.*)\](.*)$/;
-        $prefix = $1;
-        $score = $2;
-        $mid = $3;
-        $list = $4;
-        @fields = split ",[\s]*", $list;
-        $suffix = $5;
+system("$driver_prog -s $timeout $driver_flags 2>&1");
+$error_signal = $? & 127;
+if ($error_signal) {
+    if ($error_signal == 11) {
+        $error_msg = "Segmentation fault";
     } else {
-        print "$line\n";
+        $error_msg = "Died with signal $error_signal";
     }
-        
+    $core_dumped = $? & 128;
+    if ($core_dumped) {
+        print "$error_msg (core dumped)\n";
+    } else {
+        print "$error_msg\n";
+    }
 }
-
-if (!$found_autograde) {
-    print "Driver $driver_prog failed.  Exiting\n";
-    exit(0);
-}
-
-$nlist = join(', ', @fields);
-print $prefix . $score . $mid . "[$nlist]" . $suffix . "\n";

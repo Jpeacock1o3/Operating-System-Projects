@@ -30,8 +30,8 @@ syn-*.rep	Traces generated synthetically, using powerlaw distributions
 		for some mixture of typical arrays, strings, and structs.
 		Subdivided as:
 
-		syn-giant*.rep: Very large allocations to test the capability
-				for 64-bit addresses
+		syn-largemem-short.rep: Very large allocations to test the capability
+					for 64-bit addresses
 
 		syn-*short.rep: Very short traces, useful for debugging				
 				

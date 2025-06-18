@@ -20,13 +20,15 @@
  * traces from the driver's test suite.
  */
 
-#define DEFAULT_TRACEFILES  \
-  "syn-array-short.rep",	\
-  "syn-struct-short.rep",	\
-  "syn-string-short.rep",	\
-  "syn-mix-short.rep",	\
+#define DEFAULT_TRACEFILES \
+  "syn-example-short.rep", \
+  "syn-array-short.rep", \
+  "syn-struct-short.rep", \
+  "syn-string-short.rep", \
+  "syn-mix-short.rep", \
+  "syn-largemem-short.rep", \
   "ngram-fox1.rep", \
-  "syn-mix-realloc.rep",	\
+  "syn-mix-realloc.rep", \
   "bdd-aa4.rep", \
   "bdd-aa32.rep", \
   "bdd-ma4.rep", \
@@ -51,27 +53,49 @@
 
 
 /*
+ * Number of points for each checkpoint
+ */
+#define POINTS_CHECKPOINT1 100.0
+#define POINTS_CHECKPOINT2 100.0
+#define POINTS_FINAL       100.0
+
+
+/*
  * Speeds measured relative to a benchmark.  Express thresholds
  * relative to benchmark throughput
- * Students get 0 points for this point or below (ops / sec)
+ * Students get 0 points for this part of the grade if at this min
+ * point or below (ops / sec)
+ * Students get 0 points for the entire checkpoint grade if below
+ * the required speed threshold
  */
+#define REQ_SPEED_RATIO_CHECKPOINT 0.00
+#define MIN_SPEED_RATIO_CHECKPOINT 0.00
+#define REQ_SPEED_RATIO       0.01
 #define MIN_SPEED_RATIO       0.30
 /*
- * Students get 0 points for this allocation fraction or below
+ * Students get 0 points for this part of the grade if at this min
+ * allocation fraction or below
+ * Students get 0 points for the entire checkpoint grade if below
+ * the required space efficiency threshold
  */
-#define MIN_SPACE       0.25
+#define REQ_SPACE_CHECKPOINT 0.30
+#define MIN_SPACE_CHECKPOINT 0.40
+#define REQ_SPACE       0.40
+#define MIN_SPACE       0.50
 
 
 /* 
  * Students can get more points for building faster allocators, up to
  * this point (in ops / sec)
  */
+#define MAX_SPEED_RATIO_CHECKPOINT 0.05
 #define MAX_SPEED_RATIO       0.90
 
 /* 
  * Students can get more points for building more efficient allocators,
  * up to this point (1 is perfect).
  */
+#define MAX_SPACE_CHECKPOINT 0.42
 #define MAX_SPACE       0.74
 
  /*
@@ -85,7 +109,7 @@
 /*
  * Max number of random values written to each allocation 
 */
-#define MAXFILL        2048
+#define MAXFILL        1024
 
 /*
  * Alignment requirement in bytes (either 4, 8, or 16)
@@ -96,12 +120,7 @@
 /*
  * Maximum heap size in bytes
  */
-#define MAX_DENSE_HEAP (100*(1<<20))  /* 100 MB */
-
-/*
- * Starting address of the memory allocated for the heap by mmap
- */
-#define TRY_DENSE_HEAP_START (void *) 0x800000000
+#define MAX_HEAP_SIZE (1ull*(1ull<<40)) /* 1 TB */
 
 
 /***************** Parameters for looking up reference throughput *********/

@@ -62,7 +62,7 @@ while (<$infile>) {
 		$linemsg = "Lines $startlineno-$lineno contain";
 	    }
 	    if ($macname !~ /^$ok_prefix/) {
-		print "WARNING:$fwarning $linemsg disallowed definition of macro '$macname'\n";
+		print "ERROR:$fwarning $linemsg disallowed definition of macro '$macname'\n";
 	    }
 	}
 	$line = "";
